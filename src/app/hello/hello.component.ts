@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-hello',
   styleUrls: ['./hello.component.css'],
   templateUrl: './hello.component.html'
 })
+
 export class HelloComponent implements OnInit {
   title: string;
   message: string;
-  switch: string;
+  myControl: FormControl;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
     this.title = 'Hello-app';
-    this.message = 'select menu:';
-    this.switch = "one";
+    this.message = 'FormControlを使う';
+    this.myControl = new FormControl('ここに入力してね');
   }
 
-  doSelect(val) {
-    this.switch = val;
+  doClick() {
+    this.message = '「' + this.myControl.value + '」と書きましたね。';
   }
 }
