@@ -10,25 +10,31 @@
             <tr>
                 <th>Name</th>
                 <td>
-                    <input type="text" formControlName="name">
+                    <div *ngIf="name.errors !=null&&name.errors.required !=null">Nameは必須項目です。</div>
+                    <div *ngIf="name.errors !=null&&name.errors.alpha !=null">半角アルファベットのみ可です。</div>
+                    <div><input type="text" formControlName="name"></div>
                 </td>
             </tr>
             <tr>
                 <th>Mail</th>
                 <td>
-                    <input type="text" formControlName="mail">
+                    <div *ngIf="mail.errors !=null&&mail.errors.email !=null">メールアドレスが必要です。</div>
+                    <div><input type="text" formControlName="mail"></div>
                 </td>
             </tr>
             <tr>
                 <th>age</th>
                 <td>
-                    <input type="number" formControlName="age">
+                    <div *ngIf="age.errors !=null&&age.errors.min !=null">1歳以上で入力してください。</div>
+                    <div *ngIf="age.errors !=null&&age.errors.max !=null">150歳以下で入力してください。</div>
+                    <div *ngIf="age.errors !=null&&age.errors.even !=null">偶数のみ入力可です。</div>
+                    <div><input type="number" formControlName="age"></div>
                 </td>
             </tr>
             <tr>
                 <th></th>
                 <td>
-                    <input type="submit" value="click">
+                    <input [disabled]="myControl.invalid" type="submit" value="click">
                 </td>
             </tr>
         </table>
