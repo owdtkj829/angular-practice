@@ -25,6 +25,8 @@ import { MystyleDirective } from './mystyle.directive';
 })
 export class AppModule {
   constructor(private service: MycheckService) {
-    service.name = 'hanako';
+    service.push("Taro");
+    service.push("Hanako");
+    service.push("Sachiko");
   }
 }

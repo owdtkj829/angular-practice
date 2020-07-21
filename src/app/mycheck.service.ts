@@ -6,18 +6,25 @@ import { Injectable } from '@angular/core';
 export class MycheckService {
 
   constructor() {
-    this.name = '(no-name)';
+    this.data = [];
   }
 
-  get name() {
-    return this._name;
+  push(item: string) {
+    this.data.push(item);
   }
-  set name(name: string) {
-    this._name = name;
+  pop() {
+    this.data.pop();
   }
-
-  //helloメソッド
-  hello() {
-    return "Hello," + this.name + "!!";
+  get(n: number) {
+    return this.data[n];
+  }
+  get size() {
+    return this.data.length;
+  }
+  get json() {
+    return JSON.stringify(this.data);
+  }
+  get list() {
+    return JSON.parse(JSON.stringify(this.data));
   }
 }
