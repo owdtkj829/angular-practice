@@ -1,12 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
 import { MycheckService } from './mycheck.Service';
 import { MessageComponent } from './message/message.component';
 import { MystyleDirective } from './mystyle.directive';
+
+const routes: Routes = [
+  { path: 'hello', component: HelloComponent },
+  { path: 'msg/:id', component: MessageComponent },
+];
 
 @NgModule({
   declarations: [
@@ -18,15 +24,11 @@ import { MystyleDirective } from './mystyle.directive';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
-  bootstrap: [HelloComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(private service: MycheckService) {
-    service.push("Taro");
-    service.push("Hanako");
-    service.push("Sachiko");
-  }
+  constructor() { }
 }
